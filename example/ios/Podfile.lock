@@ -1,0 +1,29 @@
+PODS:
+  - datadome (1.0.0):
+    - DataDomeSDK
+    - Flutter
+  - DataDomeSDK (2.5.14)
+  - Flutter (1.0.0)
+
+DEPENDENCIES:
+  - datadome (from `.symlinks/plugins/datadome/ios`)
+  - Flutter (from `Flutter`)
+
+SPEC REPOS:
+  trunk:
+    - DataDomeSDK
+
+EXTERNAL SOURCES:
+  datadome:
+    :path: ".symlinks/plugins/datadome/ios"
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  datadome: cfb156bd2b99a6e571eb2e7ccb6b89416b47f50a
+  DataDomeSDK: b96ca429030aa1377bfe5d2a2d125309f25b14a7
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.1
