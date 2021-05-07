@@ -19,7 +19,7 @@ rootProject.allprojects {
         google()
         jcenter()
 
-        maven { url 'https://dl.bintray.com/datadome-org/datadome/' }
+        maven { url 'https://jitpack.io' }
     }
 }
 
@@ -42,5 +42,5 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'co.datadome.sdk:sdk:+'
+    implementation 'com.github.DataDome:datadome-android-package:1.6.3'
 }
