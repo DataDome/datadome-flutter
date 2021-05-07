@@ -10,7 +10,7 @@ To install the plugin, add the `DataDome` dependency to your `pubspec.yaml` file
 
 ```yml
 dependencies:
-  datadome: ^1.0.0
+  datadome: ^1.0.1
   flutter:
     sdk: flutter
 ```
