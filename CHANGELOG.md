@@ -1,3 +1,7 @@
+## 1.0.1
+
+* Migrated the repository of the android sdk from Bintray to jitpack.io.
+
 ## 1.0.0
 
 * First version of the DataDome Plugin for Flutter. Please visit the documentation for more details on how to integrate and operate the DataDome Flutter plugin.
