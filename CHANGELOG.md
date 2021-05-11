@@ -1,3 +1,7 @@
+## 1.0.2
+
+* Fixed dependencies for android with OkHTTP.
+
 ## 1.0.1
 
 * Migrated the repository of the android sdk from Bintray to jitpack.io.
