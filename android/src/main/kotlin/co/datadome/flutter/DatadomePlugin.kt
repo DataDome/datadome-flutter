@@ -3,6 +3,7 @@ package co.datadome.flutter
 import android.app.Activity
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.annotation.NonNull
 import co.datadome.sdk.DataDomeInterceptor
 import co.datadome.sdk.DataDomeSDK
@@ -14,6 +15,8 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import okhttp3.*
+import org.json.JSONArray
+import org.json.JSONObject
 import java.io.IOException
 
 
@@ -64,9 +67,26 @@ class DatadomePlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
     val method = params["method"] as String
     @Suppress("UNCHECKED_CAST")
     val headers = params["headers"] as? Map<String, String>
-    val body = params["body"] as? ByteArray
-
+    val body = data(params["body"])
     request(key = key, url = url, method = method, headers = headers, body = body, result = result)
+  }
+
+  private fun data(input: Any?): ByteArray? {
+    input?.let {
+      if (it is ByteArray) {
+        return it
+      }
+
+      if (it is Map<*, *>) {
+        return JSONObject(it).toString().toByteArray(Charsets.UTF_8)
+      }
+
+      if (it is List<*>) {
+        return JSONArray(it).toString().toByteArray(Charsets.UTF_8)
+      }
+    }
+
+    return null
   }
 
   private fun request(

@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
             http.Client test = http.Client();
 
 
-            http.Response response = await client.post(url: 'https://datadome.co/wp-json', headers: {'User-Agent': 'BLOCKUA'}, body: {'id': 1, 'data': 'test'});
+            http.Response response = await client.post(url: 'https://datadome.co/wp-json', headers: {'User-Agent': 'BLOCKUA'}, body: ['id', 'data', 'test']);
             print('Response status: ${response.statusCode}');
             print('Response headers: ${response.headers}');
             print('Response body: ${response.body}');
