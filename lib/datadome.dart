@@ -98,25 +98,12 @@ class DataDome {
       body,
       ) async {
 
-    var data;
-    if (body != null) {
-      if (body is String) {
-        data = body;
-      } else if (body is List) {
-        data = body.cast<int>();
-      } else if (body is Map) {
-        data = body.cast<String, dynamic>();
-      } else {
-        throw ArgumentError('Invalid request body "$body".');
-      }
-    }
-
     final args = {
       'csk': this.key,
       'method': describeEnum(method),
       'url': url,
       'headers': headers,
-      'body': data
+      'body': body
     };
 
     final Map<String, dynamic> response = await _channel.invokeMapMethod('request', args);
