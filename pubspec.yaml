@@ -1,6 +1,6 @@
 name: datadome
 description: A DataDome integration for Flutter.
-version: 1.0.3
+version: 1.0.4
 homepage: https://datadome.co
 repository: https://github.com/DataDome/datadome-flutter
 issue_tracker: https://github.com/DataDome/datadome-flutter/issues
