@@ -1,6 +1,11 @@
+## 1.0.3
+
+* Fixed an issue when sending map/array in the request body.
+
 ## 1.0.2
 
 * Fixed dependencies for android with OkHTTP.
+
 
 ## 1.0.1
 
