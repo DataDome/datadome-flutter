@@ -24,7 +24,7 @@ class DataDome {
   ///
   /// This method executes and return a [http.Response] instance.
   Future<http.Response> get({
-    @required String url,
+    required String url,
     Map<String, String> headers = const {}}) async {
 
     return _request(_HttpMethod.get, url, headers, null);
@@ -36,7 +36,7 @@ class DataDome {
   ///
   /// This method executes and return a [http.Response] instance.
   Future<http.Response> delete({
-    @required String url,
+    required String url,
     Map<String, String> headers = const {}}) async {
 
     return _request(_HttpMethod.delete, url, headers, null);
@@ -49,7 +49,7 @@ class DataDome {
   ///
   /// This method executes and return a [http.Response] instance.
   Future<http.Response> post({
-      @required String url,
+      required String url,
       Map<String, String> headers = const {},
       body}) async {
 
@@ -63,7 +63,7 @@ class DataDome {
   ///
   /// This method executes and return a [http.Response] instance.
   Future<http.Response> put({
-      @required String url,
+      required String url,
       Map<String, String> headers = const {},
       body}) async {
 
@@ -77,7 +77,7 @@ class DataDome {
   ///
   /// This method executes and return a [http.Response] instance.
   Future<http.Response> patch({
-      @required String url,
+      required String url,
       Map<String, String> headers = const {},
       body}) async {
 
@@ -106,7 +106,7 @@ class DataDome {
       'body': body
     };
 
-    final Map<String, dynamic> response = await _channel.invokeMapMethod('request', args);
+    final Map<String, dynamic> response = await (_channel.invokeMapMethod('request', args) as FutureOr<Map<String, dynamic>>);
     Map<String, String> responseHeaders = new Map<String, String>.from(response['headers']);
     http.Response httpResponse = http.Response.bytes(
         response['data'],
