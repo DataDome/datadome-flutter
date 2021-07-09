@@ -1,3 +1,7 @@
+## 1.0.5
+
+* Support null safety
+
 ## 1.0.4
 
 * Fixed an issue when sending map/array in the request body for android.
