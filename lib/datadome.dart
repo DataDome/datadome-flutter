@@ -2,7 +2,7 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 
 class DataDome {
@@ -22,8 +22,8 @@ class DataDome {
   /// The url should be a [String].
   /// The headers should be a [Map<String, String>].
   ///
-  /// This method executes and return a [http.Response] instance.
-  Future<http.Response> get({
+  /// This method executes and return a [Response] instance.
+  Future<Response> get({
     required String url,
     Map<String, String> headers = const {}}) async {
 
@@ -34,8 +34,8 @@ class DataDome {
   /// The url should be a [String].
   /// The headers should be a [Map<String, String>].
   ///
-  /// This method executes and return a [http.Response] instance.
-  Future<http.Response> delete({
+  /// This method executes and return a [Response] instance.
+  Future<Response> delete({
     required String url,
     Map<String, String> headers = const {}}) async {
 
@@ -47,8 +47,8 @@ class DataDome {
   /// The headers should be a [Map<String, String>].
   /// The body can be a List or a Map.
   ///
-  /// This method executes and return a [http.Response] instance.
-  Future<http.Response> post({
+  /// This method executes and return a [Response] instance.
+  Future<Response> post({
       required String url,
       Map<String, String> headers = const {},
       body}) async {
@@ -61,8 +61,8 @@ class DataDome {
   /// The headers should be a [Map<String, String>].
   /// The body can be a List or a Map.
   ///
-  /// This method executes and return a [http.Response] instance.
-  Future<http.Response> put({
+  /// This method executes and return a [Response] instance.
+  Future<Response> put({
       required String url,
       Map<String, String> headers = const {},
       body}) async {
@@ -75,8 +75,8 @@ class DataDome {
   /// The headers should be a [Map<String, String>].
   /// The body can be a List or a Map.
   ///
-  /// This method executes and return a [http.Response] instance.
-  Future<http.Response> patch({
+  /// This method executes and return a [Response] instance.
+  Future<Response> patch({
       required String url,
       Map<String, String> headers = const {},
       body}) async {
@@ -90,13 +90,8 @@ class DataDome {
   /// The body can be a List or a Map.
   ///
   /// This method executes the request using the underlying native SDKs
-  /// and creates a [http.Response] instance accordingly.
-  Future<http.Response> _request(
-      _HttpMethod method,
-      String url,
-      Map<String, String> headers,
-      body,
-      ) async {
+  /// and creates a [Response] instance accordingly.
+  Future<Response> _request(_HttpMethod method, String url, Map<String, String> headers, body,) async {
 
     final args = {
       'csk': this.key,
@@ -106,12 +101,21 @@ class DataDome {
       'body': body
     };
 
-    final Map<String, dynamic> response = await (_channel.invokeMapMethod('request', args) as FutureOr<Map<String, dynamic>>);
-    Map<String, String> responseHeaders = new Map<String, String>.from(response['headers']);
-    http.Response httpResponse = http.Response.bytes(
-        response['data'],
-        response['code'],
-        headers: responseHeaders
+    final Map<String, dynamic>? response = await _channel.invokeMapMethod('request', args);
+    Map<String, String> responseHeaders = {};
+    List<int> responseData = [];
+    int responseCode = 404;
+
+    if(response != null){
+      responseHeaders = Map<String, String>.from(response['headers']);
+      responseData = response['data'];
+      responseCode = response['code'];
+    }
+
+    Response httpResponse = Response.bytes(
+      responseData,
+      responseCode,
+      headers: responseHeaders
     );
 
     return httpResponse;

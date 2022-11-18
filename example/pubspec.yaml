@@ -1,15 +1,15 @@
 name: datadome_example
 description: Demonstrates how to use the datadome plugin.
-
+version: 1.0.5+1
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.18.4 <3.0.0'
 
 dependencies:
-  http: ^0.12.2
+  http: ^0.13.3
 
   flutter:
     sdk: flutter

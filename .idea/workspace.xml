@@ -5,8 +5,26 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41faf354-5556-441b-b072-c5715dd28d1d" name="Default Changelist" comment="">
+    <list default="true" id="41faf354-5556-441b-b072-c5715dd28d1d" name="Default Changelist" comment="feat: Change projet configuration for use flutter &gt;= 3.0&#10;&#10;BREAKING CHANGE: update pubspec.yaml for use flutter 3.0 and migrate android project for use androidX">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/test/widget_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/datadome.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/datadome.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/datadome_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/datadome_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,20 +34,31 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1oRr3vzJFJ7ioYRtnqrB9liM1Zk" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectReloadState">
+    <option name="STATE" value="1" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="dart.analysis.tool.window.force.activate" value="true" />
-    <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
-    <property name="show.migrate.to.gradle.popup" value="false" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "/Users/alexislouis/Developments/flutter/datadome-flutter",
+    "nodejs_package_manager_path": "npm",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -40,54 +69,29 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1613260048362</updated>
+      <workItem from="1668766543200" duration="3385000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="283" y="-869" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1620839281569">
-      <screen x="-141" y="-1055" width="1920" height="1055" />
-    </state>
-    <state x="283" y="-869" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1680.1025/-2061.-1055.1920.1055/-141.-1055.1920.1055/1779.-1055.1920.1055@-141.-1055.1920.1055" timestamp="1620839281569" />
-    <state width="1878" height="279" key="GridCell.Tab.0.bottom" timestamp="1620842414126">
-      <screen x="-141" y="-1055" width="1920" height="1055" />
-    </state>
-    <state width="1878" height="279" key="GridCell.Tab.0.bottom/0.25.1680.1025/-2061.-1055.1920.1055/-141.-1055.1920.1055/1779.-1055.1920.1055@-141.-1055.1920.1055" timestamp="1620842414126" />
-    <state width="1638" height="270" key="GridCell.Tab.0.bottom/0.25.1680.1025@0.25.1680.1025" timestamp="1620634891731" />
-    <state width="1878" height="280" key="GridCell.Tab.0.bottom/141.1105.1680.1025/-1920.25.1920.1055/0.25.1920.1055/1920.25.1920.1055@0.25.1920.1055" timestamp="1613327389183" />
-    <state width="1878" height="280" key="GridCell.Tab.0.bottom/141.1105.1680.1025/1920.25.1920.1055/0.25.1920.1055/-1920.25.1920.1055@0.25.1920.1055" timestamp="1613269488528" />
-    <state width="1878" height="279" key="GridCell.Tab.0.center" timestamp="1620842414124">
-      <screen x="-141" y="-1055" width="1920" height="1055" />
-    </state>
-    <state width="1878" height="279" key="GridCell.Tab.0.center/0.25.1680.1025/-2061.-1055.1920.1055/-141.-1055.1920.1055/1779.-1055.1920.1055@-141.-1055.1920.1055" timestamp="1620842414124" />
-    <state width="1638" height="270" key="GridCell.Tab.0.center/0.25.1680.1025@0.25.1680.1025" timestamp="1620634891730" />
-    <state width="1878" height="280" key="GridCell.Tab.0.center/141.1105.1680.1025/-1920.25.1920.1055/0.25.1920.1055/1920.25.1920.1055@0.25.1920.1055" timestamp="1613327389182" />
-    <state width="1878" height="280" key="GridCell.Tab.0.center/141.1105.1680.1025/1920.25.1920.1055/0.25.1920.1055/-1920.25.1920.1055@0.25.1920.1055" timestamp="1613269488527" />
-    <state width="1878" height="279" key="GridCell.Tab.0.left" timestamp="1620842414124">
-      <screen x="-141" y="-1055" width="1920" height="1055" />
-    </state>
-    <state width="1878" height="279" key="GridCell.Tab.0.left/0.25.1680.1025/-2061.-1055.1920.1055/-141.-1055.1920.1055/1779.-1055.1920.1055@-141.-1055.1920.1055" timestamp="1620842414124" />
-    <state width="1638" height="270" key="GridCell.Tab.0.left/0.25.1680.1025@0.25.1680.1025" timestamp="1620634891730" />
-    <state width="1878" height="280" key="GridCell.Tab.0.left/141.1105.1680.1025/-1920.25.1920.1055/0.25.1920.1055/1920.25.1920.1055@0.25.1920.1055" timestamp="1613327389181" />
-    <state width="1878" height="280" key="GridCell.Tab.0.left/141.1105.1680.1025/1920.25.1920.1055/0.25.1920.1055/-1920.25.1920.1055@0.25.1920.1055" timestamp="1613269488527" />
-    <state width="1878" height="279" key="GridCell.Tab.0.right" timestamp="1620842414125">
-      <screen x="-141" y="-1055" width="1920" height="1055" />
-    </state>
-    <state width="1878" height="279" key="GridCell.Tab.0.right/0.25.1680.1025/-2061.-1055.1920.1055/-141.-1055.1920.1055/1779.-1055.1920.1055@-141.-1055.1920.1055" timestamp="1620842414125" />
-    <state width="1638" height="270" key="GridCell.Tab.0.right/0.25.1680.1025@0.25.1680.1025" timestamp="1620634891730" />
-    <state width="1878" height="280" key="GridCell.Tab.0.right/141.1105.1680.1025/-1920.25.1920.1055/0.25.1920.1055/1920.25.1920.1055@0.25.1920.1055" timestamp="1613327389182" />
-    <state width="1878" height="280" key="GridCell.Tab.0.right/141.1105.1680.1025/1920.25.1920.1055/0.25.1920.1055/-1920.25.1920.1055@0.25.1920.1055" timestamp="1613269488528" />
-    <state x="461" y="188" key="SettingsEditor" timestamp="1613260138544">
-      <screen x="0" y="25" width="1920" height="1055" />
-    </state>
-    <state x="461" y="188" key="SettingsEditor/141.1105.1680.1025/1920.25.1920.1055/0.25.1920.1055/-1920.25.1920.1055@0.25.1920.1055" timestamp="1613260138544" />
-    <state x="743" y="470" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1613328614219">
-      <screen x="0" y="25" width="1920" height="1055" />
-    </state>
-    <state x="743" y="470" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/141.1105.1680.1025/-1920.25.1920.1055/0.25.1920.1055/1920.25.1920.1055@0.25.1920.1055" timestamp="1613328614219" />
+    <MESSAGE value="feat: Change projet configuration for use flutter &gt;= 3.0&#10;&#10;BREAKING CHANGE: update pubspec.yaml for use flutter 3.0 and migrate android project for use androidX" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Change projet configuration for use flutter &gt;= 3.0&#10;&#10;BREAKING CHANGE: update pubspec.yaml for use flutter 3.0 and migrate android project for use androidX" />
   </component>
 </project>
