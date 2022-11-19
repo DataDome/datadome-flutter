@@ -107,9 +107,9 @@ class DataDome {
     int responseCode = 404;
 
     if(response != null){
-      responseHeaders = Map<String, String>.from(response['headers']);
-      responseData = response['data'];
-      responseCode = response['code'];
+      responseHeaders = Map<String, String>.from(response['headers'] ?? responseHeaders);
+      responseData = response['data'] ?? responseData;
+      responseCode = response['code'] ?? responseCode;
     }
 
     Response httpResponse = Response.bytes(
