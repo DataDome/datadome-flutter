@@ -18,6 +18,7 @@ import okhttp3.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
+import okhttp3.Headers.Companion.toHeaders
 
 
 /** DatadomePlugin */
@@ -111,7 +112,7 @@ class DatadomePlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
     val client = builder.build()
     var requestBuilder = Request.Builder().url(url)
     if (headers != null) {
-      requestBuilder = requestBuilder.headers(Headers.of(headers))
+      requestBuilder = requestBuilder.headers(headers.toHeaders())
     }
     when (method) {
       "get" -> {
@@ -155,11 +156,11 @@ class DatadomePlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
       }
 
       override fun onResponse(call: Call, response: Response) {
-        val statusCode = response.code()
-        val bytes = response.body()?.bytes()
+        val statusCode = response.code
+        val bytes = response.body?.bytes()
 
         val newHeaders = HashMap<String, String>()
-        val responseHeaders = response.headers()
+        val responseHeaders = response.headers
         val headersNames = responseHeaders.names()
         for (name in headersNames) {
           val value = responseHeaders.get(name)

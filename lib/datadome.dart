@@ -106,7 +106,7 @@ class DataDome {
       'body': body
     };
 
-    final Map<String, dynamic> response = await (_channel.invokeMapMethod('request', args) as FutureOr<Map<String, dynamic>>);
+    final Map<dynamic, dynamic> response = await (_channel.invokeMapMethod('request', args) as FutureOr<Map<dynamic, dynamic>>);
     Map<String, String> responseHeaders = new Map<String, String>.from(response['headers']);
     http.Response httpResponse = http.Response.bytes(
         response['data'],
