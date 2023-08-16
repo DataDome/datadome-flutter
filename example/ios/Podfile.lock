@@ -2,7 +2,7 @@ PODS:
   - datadome (1.0.0):
     - DataDomeSDK
     - Flutter
-  - DataDomeSDK (2.8.0)
+  - DataDomeSDK (3.2.2)
   - Flutter (1.0.0)
 
 DEPENDENCIES:
@@ -21,7 +21,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   datadome: cfb156bd2b99a6e571eb2e7ccb6b89416b47f50a
-  DataDomeSDK: 2fe0416ed3bdcae258988d7ecbaa7c5dc84be548
+  DataDomeSDK: c9c2a1f6f1b1aad30ec4f43867f07c558d76e0bf
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
 
 PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3

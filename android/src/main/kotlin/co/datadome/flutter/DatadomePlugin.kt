@@ -106,6 +106,7 @@ class DatadomePlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
     dataDomeSDK = DataDomeSDK
             .with(context!!.application, key, version)
             .backBehaviour(DataDomeSDK.BackBehaviour.BLOCKED)
+      .activateDatadomeLogger(true)
 
     val builder = OkHttpClient.Builder()
     builder.addInterceptor(DataDomeInterceptor(context!!.application, dataDomeSDK))
