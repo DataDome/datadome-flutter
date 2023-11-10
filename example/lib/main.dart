@@ -28,12 +28,12 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: MaterialButton(onPressed: () async {
             //make request
-            DataDome client = DataDome('test');
+            DataDome client = DataDome('client_key');
 
             http.Client test = http.Client();
 
 
-            http.Response response = await client.post(url: 'https://datadome.co/wp-json', headers: {'User-Agent': 'BLOCKUA'}, body: ['id', 'data', 'test']);
+            http.Response response = await client.post(url: 'test_url', headers: {'User-Agent': 'BLOCKUA'}, body: []);
             print('Response status: ${response.statusCode}');
             print('Response headers: ${response.headers}');
             print('Response body: ${response.body}');
