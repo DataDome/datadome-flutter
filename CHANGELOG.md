@@ -2,7 +2,7 @@
 
 * Migrate to Android V2
 * upgrade Flutter SDK version for versions < 4.0.0
-* Upgrade kotlin version to 1.6.10
+* Upgrade Kotlin version to 1.6.10
 * Upgrade CompileSdkVersion and targetSdkVersion to 32
 * Upgrade DataDome SDK Core versions
 
