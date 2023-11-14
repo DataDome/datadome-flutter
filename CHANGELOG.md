@@ -1,7 +1,7 @@
 ## 1.1.0
 
 * Migrate to Android V2
-* Upgrade Flutter SDK version for versions < 4.0.0
+* Upgrade Dart SDK version to be compatible with Dart 3
 * Upgrade Kotlin version to 1.6.10
 * Upgrade `compileSdkVersion` and `targetSdkVersion` to 32
 * Upgrade DataDome SDK Core versions
