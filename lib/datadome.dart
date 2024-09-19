@@ -97,7 +97,6 @@ class DataDome {
       Map<String, String> headers,
       body,
       ) async {
-
     final args = {
       'csk': this.key,
       'method': describeEnum(method),
@@ -106,15 +105,20 @@ class DataDome {
       'body': body
     };
 
-    final Map<dynamic, dynamic>? response = await (_channel.invokeMapMethod('request', args) as FutureOr<Map<dynamic, dynamic>?>);
-    Map<String, String> responseHeaders = new Map<String, String>.from(response?['headers']);
-    http.Response httpResponse = http.Response.bytes(
-        response?['data'],
-        response?['code'],
-        headers: responseHeaders
-    );
+    final Map<dynamic, dynamic>? response = await (_channel.invokeMapMethod('request', args));
+    try {
+      Map<String, String> responseHeaders = new Map<String, String>.from(
+          response?['headers']);
+      http.Response httpResponse = http.Response.bytes(
+          response?['data'],
+          response?['code'],
+          headers: responseHeaders
+      );
 
-    return httpResponse;
+      return httpResponse;
+    } catch(_) {
+      throw 'Unexpected HTTP response format';
+    }
   }
 }
 
