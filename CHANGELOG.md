@@ -1,3 +1,8 @@
+## 1.2.0
+
+* Add support for HTML challenges 
+* Add support for invisible Device Check challenge
+
 ## 1.1.0
 
 * Migrate to Android V2
