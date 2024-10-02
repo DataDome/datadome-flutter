@@ -38,21 +38,11 @@ android {
     lintOptions {
         disable 'InvalidPackage'
     }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-
-    kotlinOptions {
-        jvmTarget = '11'
-    }
-
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'co.datadome.sdk:sdk:1.14.0'
+    implementation 'co.datadome.sdk:sdk:1.14.1'
     implementation "com.squareup.okhttp3:okhttp:4.9.0"
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
 }
