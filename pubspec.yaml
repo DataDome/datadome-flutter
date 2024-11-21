@@ -1,5 +1,5 @@
 name: datadome
-description: A DataDome integration for Flutter.
+description: DataDome Flutter Plugin that integrates DataDome protection into Flutter apps, adapting the iOS and Android SDKs to secure your app's networking layer.
 version: 1.2.0
 homepage: https://datadome.co
 repository: https://github.com/DataDome/datadome-flutter
