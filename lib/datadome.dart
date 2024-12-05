@@ -1,9 +1,7 @@
-
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-
 
 class DataDome {
   static const MethodChannel _channel = const MethodChannel('datadome');
@@ -23,10 +21,8 @@ class DataDome {
   /// The headers should be a [Map<String, String>].
   ///
   /// This method executes and return a [http.Response] instance.
-  Future<http.Response> get({
-    required String url,
-    Map<String, String> headers = const {}}) async {
-
+  Future<http.Response> get(
+      {required String url, Map<String, String> headers = const {}}) async {
     return _request(_HttpMethod.get, url, headers, null);
   }
 
@@ -35,10 +31,8 @@ class DataDome {
   /// The headers should be a [Map<String, String>].
   ///
   /// This method executes and return a [http.Response] instance.
-  Future<http.Response> delete({
-    required String url,
-    Map<String, String> headers = const {}}) async {
-
+  Future<http.Response> delete(
+      {required String url, Map<String, String> headers = const {}}) async {
     return _request(_HttpMethod.delete, url, headers, null);
   }
 
@@ -48,11 +42,10 @@ class DataDome {
   /// The body can be a List or a Map.
   ///
   /// This method executes and return a [http.Response] instance.
-  Future<http.Response> post({
-      required String url,
+  Future<http.Response> post(
+      {required String url,
       Map<String, String> headers = const {},
       body}) async {
-
     return _request(_HttpMethod.post, url, headers, body);
   }
 
@@ -62,11 +55,10 @@ class DataDome {
   /// The body can be a List or a Map.
   ///
   /// This method executes and return a [http.Response] instance.
-  Future<http.Response> put({
-      required String url,
+  Future<http.Response> put(
+      {required String url,
       Map<String, String> headers = const {},
       body}) async {
-
     return _request(_HttpMethod.put, url, headers, body);
   }
 
@@ -76,11 +68,10 @@ class DataDome {
   /// The body can be a List or a Map.
   ///
   /// This method executes and return a [http.Response] instance.
-  Future<http.Response> patch({
-      required String url,
+  Future<http.Response> patch(
+      {required String url,
       Map<String, String> headers = const {},
       body}) async {
-
     return _request(_HttpMethod.patch, url, headers, body);
   }
 
@@ -92,31 +83,31 @@ class DataDome {
   /// This method executes the request using the underlying native SDKs
   /// and creates a [http.Response] instance accordingly.
   Future<http.Response> _request(
-      _HttpMethod method,
-      String url,
-      Map<String, String> headers,
-      body,
-      ) async {
+    _HttpMethod method,
+    String url,
+    Map<String, String> headers,
+    body,
+  ) async {
     final args = {
       'csk': this.key,
+      // ignore: deprecated_member_use
       'method': describeEnum(method),
       'url': url,
       'headers': headers,
       'body': body
     };
 
-    final Map<dynamic, dynamic>? response = await (_channel.invokeMapMethod('request', args));
+    final Map<dynamic, dynamic>? response =
+        await (_channel.invokeMapMethod('request', args));
     try {
-      Map<String, String> responseHeaders = new Map<String, String>.from(
-          response?['headers']);
+      Map<String, String> responseHeaders =
+          new Map<String, String>.from(response?['headers']);
       http.Response httpResponse = http.Response.bytes(
-          response?['data'],
-          response?['code'],
-          headers: responseHeaders
-      );
+          response?['data'], response?['code'],
+          headers: responseHeaders);
 
       return httpResponse;
-    } catch(_) {
+    } catch (_) {
       throw 'Unexpected HTTP response format';
     }
   }
@@ -124,10 +115,4 @@ class DataDome {
 
 /// An enumeration of all supported HTTP Methods.
 /// Supported verbs are GET, DELETE, POST, PUT and PATCH
-enum _HttpMethod {
-  get,
-  delete,
-  post,
-  put,
-  patch
-}
+enum _HttpMethod { get, delete, post, put, patch }
