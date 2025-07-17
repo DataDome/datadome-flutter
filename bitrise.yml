@@ -3,6 +3,11 @@ format_version: "11"
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: flutter
 
+meta:
+  bitrise.io:
+    machine_type_id: g2-m1.4core
+    stack: osx-xcode-14.3.x-ventura
+
 trigger_map:
 - type: pull_request
   pipeline: build-and-test
