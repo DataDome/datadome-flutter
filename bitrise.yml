@@ -3,12 +3,9 @@ format_version: "11"
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: flutter
 
-app:
-  envs:
-  - BITRISE_FLUTTER_PROJECT_LOCATION: .
-
 trigger_map:
-- pipeline: build-and-test
+- type: pull_request
+  pipeline: build-and-test
   pull_request_source_branch: '*'
 
 - type: tag
@@ -16,7 +13,8 @@ trigger_map:
   tag:
     regex: "^\\d+\\.\\d+\\.\\d+(\\.\\d+)?$"
 
-- pipeline: build-and-test
+- type: push
+  pipeline: build-and-test
   push_branch: chore/INT-5280-add-bitrise-ci
 
 pipelines:
