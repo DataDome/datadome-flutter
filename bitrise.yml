@@ -18,10 +18,6 @@ trigger_map:
   tag:
     regex: "^\\d+\\.\\d+\\.\\d+(\\.\\d+)?$"
 
-- type: push
-  pipeline: build-and-test
-  push_branch: chore/INT-5280-add-bitrise-ci
-
 pipelines:
   build-and-test:
     workflows:
@@ -83,3 +79,8 @@ workflows:
     - pull-intermediate-files@1:
         inputs:
         - artifact_sources: init
+    - script@1:
+        title: "Publish to pub.dev"
+        inputs:
+        - content: |
+            dart pub publish
