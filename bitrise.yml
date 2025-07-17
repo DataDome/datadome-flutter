@@ -1,0 +1,82 @@
+format_version: "11"
+
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: flutter
+
+app:
+  envs:
+  - BITRISE_FLUTTER_PROJECT_LOCATION: .
+
+trigger_map:
+- pipeline: build-and-test
+  pull_request_source_branch: '*'
+
+- type: tag
+  pipeline: deploy
+  tag:
+    regex: "^\\d+\\.\\d+\\.\\d+(\\.\\d+)?$"
+
+- pipeline: build-and-test
+  push_branch: chore/INT-5280-add-bitrise-ci
+
+pipelines:
+  build-and-test:
+    workflows:
+      init: {}
+      test:
+        depends_on:
+          - init
+      build_sample:
+        depends_on:
+          - init
+  
+  deploy:
+    workflows:
+      init: {}
+      publish_to_pub_dev:
+        depends_on:
+          - init
+
+workflows:
+  init:
+    steps:
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+        inputs:
+        - verbose: "true"
+    - git-clone@8: {}
+    - flutter-installer@0:
+        inputs:
+        - is_update: "false"
+    - restore-dart-cache@2: {}
+    - deploy-to-bitrise-io@2:
+        inputs:
+        - pipeline_intermediate_files: $BITRISE_SOURCE_DIR:BITRISE_SOURCE_DIR
+
+  test:
+    steps:
+    - pull-intermediate-files@1:
+        inputs:
+        - artifact_sources: init
+    - flutter-analyze@0:
+        inputs:
+        - project_location: $BITRISE_SOURCE_DIR
+    - flutter-test@1:
+        inputs:
+        - project_location: $BITRISE_SOURCE_DIR
+
+  build_sample:
+    steps:
+    - pull-intermediate-files@1:
+        inputs:
+        - artifact_sources: init
+    - flutter-build@0:
+        inputs:
+        - project_location: "$BITRISE_SOURCE_DIR/example"
+    - save-dart-cache@1: {}
+
+  publish_to_pub_dev:
+    steps:
+    - pull-intermediate-files@1:
+        inputs:
+        - artifact_sources: init
