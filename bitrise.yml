@@ -8,18 +8,11 @@ meta:
     machine_type_id: g2-m1.4core
     stack: osx-xcode-14.3.x-ventura
 
-trigger_map:
-- type: pull_request
-  pipeline: build-and-test
-  pull_request_source_branch: '*'
-
-- type: tag
-  pipeline: deploy
-  tag:
-    regex: "^\\d+\\.\\d+\\.\\d+$"
-
 pipelines:
   build-and-test:
+    triggers:
+      pull_request:
+        - source_branch: "*"
     workflows:
       init: {}
       test:
@@ -30,6 +23,9 @@ pipelines:
           - init
   
   deploy:
+    triggers:
+      tag:
+        - regex: "^\\d+\\.\\d+\\.\\d+$"
     workflows:
       init: {}
       publish_to_pub_dev:
