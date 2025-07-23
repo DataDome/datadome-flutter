@@ -16,7 +16,7 @@ trigger_map:
 - type: tag
   pipeline: deploy
   tag:
-    regex: "^\\d+\\.\\d+\\.\\d+(\\.\\d+)?$"
+    regex: "^\\d+\\.\\d+\\.\\d+$"
 
 pipelines:
   build-and-test:
