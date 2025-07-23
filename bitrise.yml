@@ -25,7 +25,8 @@ pipelines:
   deploy:
     triggers:
       tag:
-        - regex: "^\\d+\\.\\d+\\.\\d+$"
+      - name:
+          regex: "^\\d+\\.\\d+\\.\\d+$"
     workflows:
       init: {}
       publish_to_pub_dev:
