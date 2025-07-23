@@ -44,7 +44,7 @@ workflows:
         inputs:
         - verbose: "true"
     - git-clone@8: {}
-    - flutter-installer@0:
+    - flutter-installer@1:
         inputs:
         - is_update: "false"
     - restore-dart-cache@2: {}
