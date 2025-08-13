@@ -1,27 +1,24 @@
-format_version: "24"
-
+---
+format_version: '24'
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: flutter
-
 meta:
   bitrise.io:
     machine_type_id: g2-m1.4core
     stack: osx-xcode-14.3.x-ventura
-
 pipelines:
   build-and-test:
     triggers:
       pull_request:
-        - source_branch: "*"
+      - source_branch: "*"
     workflows:
       init: {}
       test:
         depends_on:
-          - init
+        - init
       build_sample:
         depends_on:
-          - init
-  
+        - init
   deploy:
     triggers:
       tag:
@@ -31,24 +28,23 @@ pipelines:
       init: {}
       publish_to_pub_dev:
         depends_on:
-          - init
-
+        - init
 workflows:
   init:
     steps:
     - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
         inputs:
-        - verbose: "true"
+        - verbose: 'true'
     - git-clone@8: {}
     - flutter-installer@1:
         inputs:
-        - is_update: "false"
+        - is_update: 'false'
+        - version: "3.32.8"
     - restore-dart-cache@2: {}
     - deploy-to-bitrise-io@2:
         inputs:
-        - pipeline_intermediate_files: $BITRISE_SOURCE_DIR:BITRISE_SOURCE_DIR
-
+        - pipeline_intermediate_files: "$BITRISE_SOURCE_DIR:BITRISE_SOURCE_DIR"
   test:
     steps:
     - pull-intermediate-files@1:
@@ -56,11 +52,10 @@ workflows:
         - artifact_sources: init
     - flutter-analyze@0:
         inputs:
-        - project_location: $BITRISE_SOURCE_DIR
+        - project_location: "$BITRISE_SOURCE_DIR"
     - flutter-test@1:
         inputs:
-        - project_location: $BITRISE_SOURCE_DIR
-
+        - project_location: "$BITRISE_SOURCE_DIR"
   build_sample:
     steps:
     - pull-intermediate-files@1:
@@ -70,14 +65,12 @@ workflows:
         inputs:
         - project_location: "$BITRISE_SOURCE_DIR/example"
     - save-dart-cache@1: {}
-
   publish_to_pub_dev:
     steps:
     - pull-intermediate-files@1:
         inputs:
         - artifact_sources: init
     - script@1:
-        title: "Publish to pub.dev"
+        title: Publish to pub.dev
         inputs:
-        - content: |
-            dart pub publish
+        - content: dart pub publish
