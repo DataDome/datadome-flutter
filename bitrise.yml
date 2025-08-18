@@ -4,8 +4,8 @@ default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: flutter
 meta:
   bitrise.io:
-    machine_type_id: g2-m1.4core
-    stack: osx-xcode-14.3.x-ventura
+    machine_type_id: g2.mac.medium
+    stack: osx-xcode-16.3.x
 pipelines:
   build-and-test:
     triggers:
@@ -39,7 +39,8 @@ workflows:
     - git-clone@8: {}
     - flutter-installer@1:
         inputs:
-        - is_update: 'false'
+        - version: https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_3.27.3-stable.zip
+    - save-dart-cache: {}
     - deploy-to-bitrise-io@2:
         inputs:
         - pipeline_intermediate_files: "$BITRISE_SOURCE_DIR:BITRISE_SOURCE_DIR"
@@ -48,6 +49,7 @@ workflows:
     - pull-intermediate-files@1:
         inputs:
         - artifact_sources: init
+    - restore-dart-cache@2: {}
     - flutter-analyze@0:
         inputs:
         - project_location: "$BITRISE_SOURCE_DIR"
@@ -59,6 +61,7 @@ workflows:
     - pull-intermediate-files@1:
         inputs:
         - artifact_sources: init
+    - restore-dart-cache: {}
     - flutter-build@0:
         inputs:
         - project_location: "$BITRISE_SOURCE_DIR/example"
