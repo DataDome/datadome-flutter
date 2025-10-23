@@ -33,7 +33,9 @@ class _MyAppState extends State<MyApp> {
             http.Client test = http.Client();
 
 
-            http.Response response = await client.post(url: 'test_url', headers: {'User-Agent': 'BLOCKUA'}, body: []);
+            http.Response response = await client.post(url: 'https://example.com/',
+                                                       headers: {'User-Agent': 'BLOCKUA', 'Accept': "application/json"},
+                                                       body: []);
             print('Response status: ${response.statusCode}');
             print('Response headers: ${response.headers}');
             print('Response body: ${response.body}');
