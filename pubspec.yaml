@@ -6,7 +6,7 @@ documentation: https://docs.datadome.co/docs/flutter-plugin
 
 environment:
   sdk: ^3.0.0
-  flutter: ^3.0.0
+  flutter: ">=3.0.0"
 
 dependencies:
   http: ^1.0.0
