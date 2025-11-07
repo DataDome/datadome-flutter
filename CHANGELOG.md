@@ -1,8 +1,7 @@
 ## 2.0.0 (2025-11-06)
 
 * Upgrade `http` dependency version to `^1.0.0`
-* Update the major supported version of DataDome iOS SDK 
-* Upgrade DataDome Android SDK version
+* Upgrade DataDome Android SDK dependency to fetch the latest `3.x.x` released version
 
 ## 1.2.0
 
