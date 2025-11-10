@@ -1,7 +1,11 @@
 ## 2.0.0 (2025-11-06)
 
 * Upgrade `http` dependency version to `^1.0.0`
-* Upgrade DataDome Android SDK dependency to fetch the latest `3.x.x` released version
+* Upgrade DataDome Android SDK dependency to `^3.0.0`
+
+### Android requirements
+* Minimum API level (`minSdkVersion`): 19
+* Minimum Kotlin version: 1.9.0
 
 ## 1.2.0
 
