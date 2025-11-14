@@ -29,6 +29,12 @@ pipelines:
       publish_to_pub_dev:
         depends_on:
         - init
+      publish-changelog:
+        depends_on:
+          - publish_to_pub_dev
+      create-rss-changelog:
+        depends_on:
+          - publish_to_pub_dev
 workflows:
   init:
     steps:
@@ -74,3 +80,36 @@ workflows:
         title: Publish to pub.dev
         inputs:
         - content: dart pub publish
+  create-rss-changelog:
+    steps:
+    - pull-intermediate-files@1:
+        inputs:
+        - artifact_sources: init
+    - set-env-var@0:
+        inputs:
+        - value: CHANGELOG.md
+        - destination_keys: DOCUMENTATION_FILE_PATH
+    - script-runner@0:
+        title: Create changelog entry
+        inputs:
+        - file_path: $BITRISE_SOURCE_DIR/scripts/post_changelog_to_public_documentation_rss_feed.sh
+        - runner: bash
+  publish-changelog:
+    steps:
+    - pull-intermediate-files@1:
+        inputs:
+        - artifact_sources: init
+    - set-env-var@0:
+        inputs:
+        - value: CHANGELOG.md
+        - destination_keys: DOCUMENTATION_FILE_PATH
+    - script-runner@0:
+        title: Update the documentation
+        inputs:
+        - file_path: $BITRISE_SOURCE_DIR/scripts/update_public_documentation_page.sh
+        - runner: bash
+app:
+  envs:
+  - PUBLIC_CHANGELOG_PAGE_SLUG: flutter-plugin-changelog
+    opts:
+      is_expand: false
