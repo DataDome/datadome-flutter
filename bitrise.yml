@@ -34,7 +34,7 @@ pipelines:
           - publish_to_pub_dev
       create-rss-changelog:
         depends_on:
-          - publish_to_pub_dev
+          - publish_to_pub_dev  
 workflows:
   init:
     steps:
