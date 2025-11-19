@@ -1,3 +1,7 @@
+## 2.0.1 (2025-11-19)
+
+* Fix: On iOS, POST HTTP request with a `FlutterStandardTypedData` body are no longer emitted with an empty body
+
 ## 2.0.0 (2025-11-06)
 
 * Upgrade `http` dependency version to `^1.0.0`
