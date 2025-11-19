@@ -71,6 +71,10 @@ workflows:
         inputs:
         - artifact_sources: init
     - script@1:
+      title: Validating package safety
+      inputs:
+      - content: dart pub publish --dry-run
+    - script@1:
         title: Publish to pub.dev
         inputs:
-        - content: dart pub publish
+        - content: dart pub publish --force
