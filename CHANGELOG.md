@@ -1,6 +1,6 @@
 ## 2.0.1 (2025-11-19)
 
-* Fix: On iOS, POST HTTP request with a `FlutterStandardTypedData` body are no longer emitted with an empty body
+* Fix on issue on iOS where POST HTTP requests could be sent without the expected body when giving a `FlutterStandardTypedData` as the body.
 
 ## 2.0.0 (2025-11-06)
 
