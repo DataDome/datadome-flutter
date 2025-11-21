@@ -56,6 +56,10 @@ public class SwiftDatadomePlugin: NSObject, FlutterPlugin {
             return input as? Data
         }
         
+        if let input = input as? FlutterStandardTypedData {
+            return input.data
+        }
+        
         if input is Dictionary<String, Any> || input is Array<Any> {
             return try? JSONSerialization.data(withJSONObject: input, options: [])
         }
