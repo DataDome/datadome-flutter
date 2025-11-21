@@ -6,18 +6,19 @@ set -e
 # debug log
 set -x
 
-POST=$(awk '/## '${BITRISE_GIT_TAG}'/{flag=1;next}/^## /{flag=0}flag' $DOCUMENTATION_FILE_PATH)
-POST_BODY=$(sed 's/$/\\n/' <<<"$POST" | tr -d '\n')
+# privacy_view options:
+README_HIDE_PUBLICATION="anyone_with_link"
+README_PUBLIC_PUBLICATION="public"
+
+# Extract the CHANGELOG section corresponding to the specified TAG
+POST_BODY=$(awk '/## '${BITRISE_GIT_TAG}'/{flag=1;next}/^## /{flag=0}flag' $DOCUMENTATION_FILE_PATH)
+
+jq -n --arg body "${POST_BODY}" --arg title "Flutter HTTP SDK ${BITRISE_GIT_TAG}" --arg privacy_view "${README_PUBLIC_PUBLICATION}" \
+    '{title: $title, content: {body: $body}, privacy: {view: $privacy_view}}' > changelog_rss_release.json
 
 # BITRISE_README_TOKEN is the readme.com token, stored in the Bitrise secret manager
 curl --request POST \
-     --url https://dash.readme.com/api/v1/changelogs \
-     --header "authorization: Basic ${BITRISE_README_TOKEN}" \
-     --header 'content-type: application/json' \
-     --data '
-{
-  "hidden": true,
-  "title": "'"Flutter HTTP SDK ${BITRISE_GIT_TAG}"'",
-  "body": "'"$POST_BODY"'"
-}
-'
+     --url "https://api.readme.com/v2/changelogs" \
+     --header "authorization: Bearer ${BITRISE_README_TOKEN}" \
+     --header "content-type: application/json" \
+     --data @changelog_rss_release.json

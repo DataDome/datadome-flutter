@@ -6,15 +6,19 @@ set -e
 # debug log
 set -x
 
-FILE_BODY=$(sed 's/$/\\n/' $DOCUMENTATION_FILE_PATH | tr -d '\n')
+# privacy_view options:
+README_HIDE_PUBLICATION="anyone_with_link"
+README_PUBLIC_PUBLICATION="public"
+README_DEFAULT_BRANCH_NAME="stable"
 
-curl --request PUT \
-     --url https://docs.datadome.co/docs/$PUBLIC_CHANGELOG_PAGE_SLUG \
+FILE_BODY=$(cat $DOCUMENTATION_FILE_PATH)
+
+jq -n --arg body "${FILE_BODY}" --arg privacy_view "${README_PUBLIC_PUBLICATION}" \
+    '{content: {body: $body}, privacy: {view: $privacy_view}}' > changelog.json
+
+curl --request PATCH \
+     --url "https://api.readme.com/v2/branches/${README_DEFAULT_BRANCH_NAME}/guides/${README_CHANGELOG_SLUG}" \
      --header 'accept: application/json' \
-     --header "authorization: Basic ${BITRISE_README_TOKEN}" \
+     --header "authorization: Bearer ${BITRISE_README_TOKEN}" \
      --header 'content-type: application/json' \
-     --data '
-    {
-  "body": "'"$FILE_BODY"'"
-  }
-  '
+     --data @changelog.json
