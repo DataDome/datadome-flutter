@@ -13,7 +13,7 @@ README_DEFAULT_BRANCH_NAME="stable"
 
 FILE_BODY=$(cat $DOCUMENTATION_FILE_PATH)
 
-jq -n --arg body "${FILE_BODY}" --arg privacy_view "${README_PUBLIC_PUBLICATION}" \
+jq -n --arg body "${FILE_BODY}" --arg privacy_view "${README_PAGE_VISIBILITY_PUBLIC}" \
     '{content: {body: $body}, privacy: {view: $privacy_view}}' > changelog.json
 
 curl --request PATCH \
