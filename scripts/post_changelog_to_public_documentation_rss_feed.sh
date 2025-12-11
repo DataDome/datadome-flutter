@@ -7,8 +7,8 @@ set -e
 set -x
 
 # privacy_view options:
-README_HIDE_PUBLICATION="anyone_with_link"
-README_PUBLIC_PUBLICATION="public"
+README_RSS_ENTRY_VISIBILITY_PRIVATE="anyone_with_link"
+README_RSS_ENTRY_VISIBILITY_PUBLIC ="public"
 
 # Extract the CHANGELOG section corresponding to the specified TAG
 POST_BODY=$(awk '/## '${BITRISE_GIT_TAG}'/{flag=1;next}/^## /{flag=0}flag' $DOCUMENTATION_FILE_PATH)
