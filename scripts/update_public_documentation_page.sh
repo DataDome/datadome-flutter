@@ -7,8 +7,8 @@ set -e
 set -x
 
 # privacy_view options:
-README_HIDE_PUBLICATION="anyone_with_link"
-README_PUBLIC_PUBLICATION="public"
+README_PAGE_VISIBILITY_PRIVATE="anyone_with_link"
+README_PAGE_VISIBILITY_PUBLIC ="public"
 README_DEFAULT_BRANCH_NAME="stable"
 
 FILE_BODY=$(cat $DOCUMENTATION_FILE_PATH)
