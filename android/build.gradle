@@ -1,47 +1,80 @@
-group 'co.datadome.datadome'
-version '1.0-SNAPSHOT'
+group = 'co.datadome.datadome'
+version = '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext.kotlin_version = '1.9.25'
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.2'
+        // Only used for standalone builds of this module. When consumed by an app, Gradle resolves
+        // AGP/KGP from the host app's classpath (parent-first), so these don't constrain the app's
+        // AGP version. Kept at the lowest supported AGP (8.x); AGP 9 is handled below.
+        classpath 'com.android.tools.build:gradle:8.3.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
+// jcenter() was removed in Gradle 9; mavenCentral() serves the same artifacts.
 rootProject.allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
 
         maven { url 'https://jitpack.io' }
     }
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+
+// AGP 9+ compiles Kotlin itself ("built-in Kotlin") and registers the `kotlin` extension.
+// AGP 8, or AGP 9 with android.builtInKotlin=false, still needs the Kotlin Gradle plugin.
+// Unlike the Flutter guide (which drops KGP and requires Flutter 3.44+), KGP is applied conditionally
+// to keep supporting AGP 8 apps. Sources:
+//   https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
+//   https://developer.android.com/build/migrate-to-built-in-kotlin
+// pluginManager.apply is used instead of `apply plugin:` because Flutter 3.44+ scans plugin build
+// files for that text and warns (future versions: fails) even when it is never applied on AGP 9.
+if (project.extensions.findByName('kotlin') == null) {
+    project.pluginManager.apply('org.jetbrains.kotlin.android')
+}
 
 android {
-    compileSdkVersion 32
+    // Required since AGP 8 (replaces the manifest `package` attribute).
+    namespace = 'co.datadome.datadome'
+    compileSdk = 36
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
     defaultConfig {
-        minSdkVersion 19
+        minSdk = 19
     }
-    lintOptions {
-        disable 'InvalidPackage'
+    lint {
+        disable.add('InvalidPackage')
     }
 }
 
+// Task-level compilerOptions works with KGP 1.8+ and with AGP built-in Kotlin,
+// unlike `kotlinOptions` (removed in AGP 9) or `kotlin { compilerOptions }` (KGP 2.0+).
+// KGP < 1.8 has no compilerOptions, so fall back to kotlinOptions there.
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach { task ->
+    if (task.hasProperty('compilerOptions')) {
+        task.compilerOptions.jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+    } else {
+        task.kotlinOptions.jvmTarget = '17'
+    }
+}
+
+// kotlin-stdlib is added automatically by KGP and by AGP built-in Kotlin.
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'co.datadome.sdk:sdk:3.+'
     implementation "com.squareup.okhttp3:okhttp:4.9.0"
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'

@@ -100,7 +100,7 @@ class DatadomePlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
 
     var version = ""
     context?.let {
-      version = it.packageManager.getPackageInfo(it.packageName, 0).versionName
+      version = it.packageManager.getPackageInfo(it.packageName, 0).versionName ?: ""
     }
 
     dataDomeSDK = DataDomeSDK
